@@ -9,7 +9,7 @@ Google fonts
 
     generate ->  copy href to index.html.head -> update index.css/scss ->  inspect the change
 
-react-router-dom  vs next nav
+react-router-dom  vs NextJS nav
     next
         <Layout>
             <Component {...pageProps} />
@@ -21,14 +21,16 @@ react-router-dom  vs next nav
                         <Link href='/'>Home</Link>
 
     react-router-dom
-        <Routes>
-            <Route path='/' element={<Nav />} >
-                <Route path='home' element={<Home />} />
-                <Route path='toys' element={<Toys />} />
+        App
+            <Routes>
+                <Route path='/' element={<Nav />} >
+                    <Route path='home' element={<Home />} />
+                    <Route path='toys' element={<Toys />} />
     
         <Nav>
-            <h2>Nav Bar</h2>
-            <Outlet />
+            <div>
+                <Link to='/home'>
+                    <div>LOGO</div>
 
 
 

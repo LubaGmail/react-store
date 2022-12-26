@@ -1,21 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
-import { Outlet } from "react-router-dom";
 
+import Nav from './components/navigation/nav'
 import Home from './components/routes/home/home';
 
-const Toys = () => {
+export const Toys = () => {
   return (
     <>
       <h2>Toys</h2>
-    </>
-  )
-}
-
-export const Nav = () => {
-  return (
-    <>
-      <h2 style={{ backgroundColor: 'yellow' }}>Nav Bar</h2>
-      <Outlet />
     </>
   )
 }
