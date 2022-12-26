@@ -2,8 +2,8 @@ import './category-item.styles.scss'
 
 const CategoryItem = ({category}) => {
   return (
-    <>
-        <img src='/images/snowflakes.webp'
+    <div className='category'>
+          <img src='/images/snowflakes.webp'
             className='backgroundImage'
             alt='snowflake'
         />
@@ -11,7 +11,7 @@ const CategoryItem = ({category}) => {
             <h2>{category.title}</h2>
             <p>Shop Now</p>
         </div>
-    </>
+    </div>
      
   );
 }

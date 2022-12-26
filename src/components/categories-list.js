@@ -8,9 +8,7 @@ const CategoryList = () => {
       <div className='categories'>
         {
           DUMMY_CATEGORIES.map( (el, i) => (
-            <div  key={i} className='category'>
-              <CategoryItem category={el} />
-            </div>
+            <CategoryItem category={el} key={i} />
           ))
         }
       </div>
