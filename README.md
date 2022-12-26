@@ -32,6 +32,9 @@ react-router-dom  vs NextJS nav
                 <Link to='/home'>
                     <div>LOGO</div>
 
+SVG
+    https://sketchapp.com
+
 
 
 
