@@ -2,11 +2,12 @@ import { Routes, Route } from 'react-router-dom';
 
 import Nav from './components/navigation/nav'
 import Home from './components/routes/home/home';
+import SignIn from './components/routes/sign-in/sign-in';
 
-export const Toys = () => {
+export const Shop = () => {
   return (
     <>
-      <h2>Toys</h2>
+      <h2>Shop</h2>
     </>
   )
 }
@@ -16,7 +17,8 @@ const App = () => {
     <Routes>
       <Route path='/' element={<Nav />} >
         <Route path='home' element={<Home />} />
-        <Route path='toys' element={<Toys />} />
+        <Route path='shop' element={<Shop />} />
+        <Route path='sign-in' element={<SignIn />} />
       </Route>
     </Routes>
   );

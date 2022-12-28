@@ -1,8 +1,8 @@
 import CategoryList from "../../categories/categories-list";
 
 /**
-    <Route path='/' element={<Home />} >
-        <Route path='toys' element={<Toys />} />
+  <Route path='/' element={<Home />} >
+    <Route path='toys' element={<Toys />} />
  */
 const Home = () => {
   return (

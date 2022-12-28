@@ -3,7 +3,7 @@ import './category-item.styles.scss'
 const CategoryItem = ({category}) => {
   return (
     <div className='category'>
-          <img src='/images/snowflakes.webp'
+        <img src='/images/snowflakes.webp'
             className='backgroundImage'
             alt='snowflake'
         />

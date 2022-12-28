@@ -7,15 +7,18 @@ const Nav = () => {
 
     return (
         <>
-            <div className="nav" style={{background: 'yellow'}} >
+            <div className="nav" style={{background: '#F0F8FF'}} >
                 <Link to='/home' className="logo" >
                     <div className="logoDiv">
                         <CrownLogo className="logo" />
                     </div>
                 </Link>
                 <div className="navLinks">
-                    <Link to='/toys' className="navLink">
-                        TOYS
+                    <Link to='/shop' className="navLink">
+                        SHOP
+                    </Link>
+                    <Link to='/sign-in' className="navLink">
+                        SIGN IN
                     </Link>
                 </div>
 

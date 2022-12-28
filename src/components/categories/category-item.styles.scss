@@ -34,7 +34,8 @@
     .backgroundImage {
         width: 100%;
         height: 100%;
-        background-size: cover;
+        // may stretch to cover container
+        background-size: cover;     
         background-position: center;
     }
     .categoryBody {

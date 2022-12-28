@@ -1,24 +1,25 @@
 Setup
     npx create-react-app react-store
-        npm i sass      npm i react-router-dom
+        npm i sass      npm i react-router-dom      npm i firebase
 
     npm start           npm start
 
 Google fonts
     https://fonts.google.com/       https://fonts.google.com/specimen/Open+Sans?category=Sans+Serif
 
-    generate ->  copy href to index.html.head -> update index.css/scss ->  inspect the change
+    generate ->  copy href to public/index.html<head> -> update src/index.css/scss ->  inspect the change
 
 react-router-dom  vs NextJS nav
     next
-        <Layout>
-            <Component {...pageProps} />
-        <MainNav>
-            <div>
-                <Link href='/'>LOGO</Link>
-                <ul>
-                    <li>
-                        <Link href='/'>Home</Link>
+        /pages/_app.js
+            <Layout>
+                <Component {...pageProps} />
+            <MainNav>
+                <div>
+                    <Link href='/'>LOGO</Link>
+                    <ul>
+                        <li>
+                            <Link href='/'>Home</Link>
 
     react-router-dom
         App
@@ -32,9 +33,14 @@ react-router-dom  vs NextJS nav
                 <Link to='/home'>
                     <div>LOGO</div>
 
-SVG
-    https://sketchapp.com
+Firebase
+    https://console.firebase.google.com/?pli=1
 
+    create cloghing-db project
 
+        Project Overview
+            Build
+                Authentication
+                Firestore Database
 
 
