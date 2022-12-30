@@ -20,6 +20,9 @@ const Nav = () => {
                     <Link to='/sign-in' className="navLink">
                         SIGN IN
                     </Link>
+                    <Link to='/sign-up' className="navLink">
+                        SIGN UP
+                    </Link>
                 </div>
 
             </div>
