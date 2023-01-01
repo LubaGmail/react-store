@@ -7,7 +7,7 @@ Setup
 Google fonts
     https://fonts.google.com/       https://fonts.google.com/specimen/Open+Sans?category=Sans+Serif
 
-    generate ->  copy href to public/index.html<head> -> update src/index.css/scss ->  inspect the change
+    generate on google site ->  copy href to public/index.html<head> -> update src/index.css/scss ->  inspect the change
 
 react-router-dom  vs NextJS nav
     next

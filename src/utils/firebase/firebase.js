@@ -28,9 +28,9 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 
 // instance of provider; you can have have multiple providers
-const provider = new GoogleAuthProvider()
+const googleProvider = new GoogleAuthProvider()
 
-provider.setCustomParameters({
+googleProvider.setCustomParameters({
     prompt: 'select_account'
 })
 
@@ -47,11 +47,12 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     const exists = userSnapshot.exists()
 
     if (!exists) {
+        // Both Athentication record and users document is created in Firestore
         const { displayName, email } = userAuth;
         const createdAt = new Date();
         try {
             await setDoc(userDocRef, {
-                displayName,
+                displayName,    
                 email,
                 createdAt,
                 ...additionalInformation,
@@ -66,7 +67,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
 export const createAuthUserWithEmailAndPassword = async (email, pass, confirmPass) => {
     // validate fields
     if (pass !== confirmPass || pass.length < 6) {
-        throw new Error('signup-form.handleSubmit - password and confirmPassword must be equal.')
+       throw new Error('signup-form.handleSubmit - password and confirmPassword must be equal.')
     }
 
     //  auth is a singleton through the life of the app
@@ -76,8 +77,4 @@ export const createAuthUserWithEmailAndPassword = async (email, pass, confirmPas
 
 // application wide
 export const auth = getAuth()
-export const signInWithGooglePopup = () => signInWithPopup(auth, provider)
-
-
-
-
+export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)

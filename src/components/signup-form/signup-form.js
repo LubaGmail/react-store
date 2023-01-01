@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { createAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase'
+import InputForm from '../input-form/input-form'
 
 const SignupForm = () => {
     const defaultFields = {
@@ -28,15 +29,16 @@ const SignupForm = () => {
         }
         
         try {
+            // Athentication record is created in the Firebase
             const res = await createAuthUserWithEmailAndPassword(email, pass, confirmPass)
             handleReset()
-            console.log('res', res)
+            // console.log('res', res)
         } catch (error) {
             alert(error.toString())
         }
     }
 
-    const handleReset = (ev) => {
+    const handleReset = () => {
         setFormFields(defaultFields)
     }
 
@@ -45,35 +47,42 @@ const SignupForm = () => {
             <div>
                 <h2>Sign Up</h2>
                 <form onSubmit={handleSubmit} onReset={handleReset}>
-                    <label>Display Name: </label>
-                    <input required
-                        type='text' id='displayName' minLength={2}
-                        name='displayName' value={displayName} 
+                    <InputForm id='displayName'
+                        label='Display Name: '
+                        type='text'
+                        name='displayName'
+                        value={displayName} 
+                        onChange={handleChange}
+                        minLength={2}
+                    />
+                    <br />
+
+                    <InputForm id='email'
+                        label='Email: '
+                        type='email'
+                        name='email'
+                        value={email}
                         onChange={handleChange}
                     />
                     <br />
 
-                    <label>Email: </label>
-                    <input required
-                        type='email' id='email'
-                        name='email' value={email}
+                    <InputForm id='pass'
+                        label='Password: '
+                        type='password'  
+                        name='pass'
+                        value={pass}
                         onChange={handleChange}
-                    />
-                    <br />
-
-                    <label>Password: </label>
-                    <input required
-                        type='password' id='pass' minLength={6}
-                        name='pass' value={pass}
-                        onChange={handleChange}
+                        minLength={6}
                      />
                     <br />
 
-                    <label>Confirm Password: </label>
-                    <input required
-                        type='password' id='confirmPass' minLength={6}
-                        name='confirmPass' value={confirmPass}
+                    <InputForm id='confirmPass'
+                        type='password'
+                        label='Confirm Password: '
+                        name='confirmPass'
+                        value={confirmPass}
                         onChange={handleChange}
+                        minLength={6}
                     />
                     <br />
 
