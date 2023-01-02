@@ -2,7 +2,9 @@ import { useState } from 'react'
 
 import { createAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase'
 import InputForm from '../input-form/input-form'
+import Button from '../button/button'
 import './signup-form.styles.scss'
+import '../button/button.styles.scss'
 
 const SignupForm = () => {
     const defaultFields = {
@@ -17,8 +19,8 @@ const SignupForm = () => {
     const handleChange = (ev) => {
         const { name, value } = ev.target
         setFormFields( {
-                ...formFields,
-                [name]: value.trim()
+            ...formFields,
+            [name]: value.trim()
         } )
     }
 
@@ -44,11 +46,12 @@ const SignupForm = () => {
 
     return (
         <>
-            <div className='sign-up-container'>
+            <div className='sign-up-container'
+             >
                 <h2>Don't have an account?</h2>
                 <span>Sign up with your email and password</span>
                 
-                <form onSubmit={handleSubmit} onReset={handleReset}>
+                <form onSubmit={handleSubmit}>
                     <InputForm id='displayName'
                         label='Display Name'
                         type='text'
@@ -56,6 +59,7 @@ const SignupForm = () => {
                         value={displayName} 
                         onChange={handleChange}
                         minLength={2}
+                        required
                     />
 
                     <InputForm id='email'
@@ -64,6 +68,7 @@ const SignupForm = () => {
                         name='email'
                         value={email}
                         onChange={handleChange}
+                        required
                     />
 
                     <InputForm id='pass'
@@ -73,6 +78,7 @@ const SignupForm = () => {
                         value={pass}
                         onChange={handleChange}
                         minLength={6}
+                        required
                      />
 
                     <InputForm id='confirmPass'
@@ -82,11 +88,18 @@ const SignupForm = () => {
                         value={confirmPass}
                         onChange={handleChange}
                         minLength={6}
+                        required
                     />
 
-                    <div>
-                        <button type='submit'>Submit</button>
-                        <button type='reset'>Reset</button>
+                    <div className='button-div'>
+                        <Button type='button' buttonType='google'
+                            onClick={handleSubmit}
+                        >
+                            Sign Up
+                        </Button>
+                        <span className='clear' onClick={handleReset}>
+                            Clear
+                        </span>
                     </div>
                 </form>
 

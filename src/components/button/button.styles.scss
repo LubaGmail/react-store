@@ -1,0 +1,33 @@
+.button-container {
+    width: 150px;
+    height: 50px;
+    line-height: 50px;
+    letter-spacing: 0.5px;
+    padding: 0 1rem 0 1rem;
+    font-size: 15px;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Open Sans Condensed';
+    font-weight: bolder;
+    border: none;
+    margin-right: 1rem;
+
+    &:hover {
+        background-color: white;
+        color: black;
+        border: 1px solid black;
+    }
+
+    &.google-signup {
+        background-color: white;
+        color: black;
+        border: 2px solid rgb(25, 183, 47);
+
+        &:hover {
+            background-color: rgb(25, 183, 47);
+            color: white;
+            border: none;
+        }
+    }
+}
