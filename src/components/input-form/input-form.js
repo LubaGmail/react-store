@@ -11,9 +11,7 @@ const InputForm = ({ label, ...otherProps }) => {
             {/* apply shrink class on focus or input */}
             {label && (
                 <label
-                    className={`${
-                        otherProps.value.length ? 'shrink' : ''
-                    } form-input-label`}
+                    className={`${ otherProps.value.length ? 'shrink' : '' } form-input-label`}
                 >
                     {label}
                 </label>

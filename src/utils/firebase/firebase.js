@@ -64,6 +64,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
     return userDocRef;
 }
 
+// const res = await createAuthUserWithEmailAndPassword(email, pass, confirmPass)
 export const createAuthUserWithEmailAndPassword = async (email, pass, confirmPass) => {
     // validate fields
     if (pass !== confirmPass || pass.length < 6) {
@@ -71,8 +72,8 @@ export const createAuthUserWithEmailAndPassword = async (email, pass, confirmPas
     }
 
     //  auth is a singleton through the life of the app
-    const res = await createUserWithEmailAndPassword(auth, email, pass)
-    return res
+    const userCredentialImpl = await createUserWithEmailAndPassword(auth, email, pass)
+    return userCredentialImpl
 }
 
 // application wide

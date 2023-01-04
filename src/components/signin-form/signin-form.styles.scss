@@ -1,3 +1,18 @@
+.sign-in-container {
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+
+    h2 {
+        margin: 10px 0;
+    }
+
+    .button-div {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 .button-container {
     width: 200px;
     height: 40px;
@@ -19,7 +34,7 @@
         border: 1px solid black;
     }
 
-    &.google-signup {
+    &.google-button {
         background-color: white;
         color: black;
         border: 2px solid rgb(25, 183, 47);

@@ -11,6 +11,7 @@ code {
     monospace;
 }
 
+// element's border and padding are added to the element's specified width/height
 * {
   box-sizing: border-box;
 }
@@ -27,5 +28,6 @@ button {
 .center {
   margin: auto;
   text-align: center;
-  align-content: center;
+  justify-content: center;    // horizontal
+  align-items: center;        // vertical
 }

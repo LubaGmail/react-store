@@ -32,8 +32,8 @@ const SignupForm = () => {
         }
         
         try {
-            // Athentication record is created in the Firebase
-            const res = await createAuthUserWithEmailAndPassword(email, pass, confirmPass)
+            // Athentication record is created in the Firebase with accessToken
+            const userCredentialImpl = await createAuthUserWithEmailAndPassword(email, pass, confirmPass)
             handleReset()
         } catch (error) {
             alert(error.toString())

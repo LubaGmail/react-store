@@ -2,8 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Nav from './components/navigation/nav'
 import Home from './components/routes/home/home';
-import SignIn from './components/routes/sign-in/sign-in';
-import SignupForm from './components/signup-form/signup-form';
+import Auth from './components/routes/auth/auth'
 
 export const Shop = () => {
   return (
@@ -19,8 +18,7 @@ const App = () => {
       <Route path='/' element={<Nav />} >
         <Route path='home' element={<Home />} />
         <Route path='shop' element={<Shop />} />
-        <Route path='sign-in' element={<SignIn />} />
-        <Route path='sign-up' element={<SignupForm />} />
+        <Route path='auth' element={<Auth />} />
       </Route>
     </Routes>
   );
