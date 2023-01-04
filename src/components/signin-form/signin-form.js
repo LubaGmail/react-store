@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 // export const signInWithGooglePopup = () => signInWithPopup(auth, provider)
-import { signInWithGooglePopup, createUserDocumentFromAuth } from '../../utils/firebase/firebase'
+import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase'
 import './signin-form.styles.scss'
 import InputForm from '../input-form/input-form'
 
@@ -29,9 +29,18 @@ const SigninForm = () => {
         const userDocRef = await createUserDocumentFromAuth(user);
     }
 
-    const handleSubmit = (ev) => {
+    const handleSubmit = async(ev) => {
         ev.preventDefault()
-        console.log('submit', formFields)
+        const { email, pass } = formFields
+       
+        let userCredentialImpl
+        try {
+            userCredentialImpl = await signInAuthUserWithEmailAndPassword(email, pass)
+        } catch (error) {
+          throw new Error(error.toString())  
+        }
+        console.log('userCredentialImpl', userCredentialImpl )
+        setFormFields(defaultFields)    
     }
 
     return (

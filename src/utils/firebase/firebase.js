@@ -5,7 +5,8 @@ import {
     signInWithRedirect,
     signInWithPopup,
     GoogleAuthProvider,
-    createUserWithEmailAndPassword
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
 } from "firebase/auth"
 
 import {
@@ -73,6 +74,17 @@ export const createAuthUserWithEmailAndPassword = async (email, pass, confirmPas
 
     //  auth is a singleton through the life of the app
     const userCredentialImpl = await createUserWithEmailAndPassword(auth, email, pass)
+    return userCredentialImpl
+}
+
+export const signInAuthUserWithEmailAndPassword = async (email, pass) => {
+    // validate fields
+    if (!email || !pass) {
+        throw new Error('signin-form.handleSubmit - email and password not entered.')
+    }
+
+    //  auth is a singleton through the life of the app
+    const userCredentialImpl = await signInWithEmailAndPassword(auth, email, pass)
     return userCredentialImpl
 }
 
