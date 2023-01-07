@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 
 // export const signInWithGooglePopup = () => signInWithPopup(auth, provider)
 import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase'
 import './signin-form.styles.scss'
 import InputForm from '../input-form/input-form'
-import Button from  '../button/button'
+import Button from '../button/button'
+
+import { UserContext } from '../../contexts/user-context'
 
 const SigninForm = () => {
     const defaultFields = {
@@ -12,7 +14,10 @@ const SigninForm = () => {
         pass: ''
     }
     const [formFields, setFormFields] = useState(defaultFields)
-    const { email, pass} = formFields
+    const { email, pass } = formFields
+    
+    // setCurrentUser ƒ dispatchSetState(fiber, queue, action) 
+    const { setCurrentUser } = useContext(UserContext);
     
     const handleChange = (ev) => {
         const { name, value } = ev.target
@@ -23,24 +28,21 @@ const SigninForm = () => {
     }
 
     const logGoogleUser = async () => {
-        console.log('logGoogleUser')
-        // user.accessToken to make a crud request
         const { user } = await signInWithGooglePopup()
-        // Ref to users collection
         const userDocRef = await createUserDocumentFromAuth(user);
+        setCurrentUser(user);
     }
 
     const handleSubmit = async(ev) => {
         ev.preventDefault()
         const { email, pass } = formFields
        
-        let userCredentialImpl
         try {
-            userCredentialImpl = await signInAuthUserWithEmailAndPassword(email, pass)
+            const { user } = await signInAuthUserWithEmailAndPassword(email, pass)
+            setCurrentUser(user);
         } catch (error) {
-          throw new Error(error.toString())  
+          alert(error.toString())  
         }
-        console.log('userCredentialImpl', userCredentialImpl )
         setFormFields(defaultFields)    
     }
 

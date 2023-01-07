@@ -43,3 +43,7 @@ Firebase
                 Authentication
                 Firestore Database
 
+.
+.
+.   >   More tools >    Rendering   > Paint flashing
+

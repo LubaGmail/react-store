@@ -1,9 +1,12 @@
 import { Outlet, Link } from "react-router-dom"
+import { useContext } from 'react';
 
 import './nav.styles.scss'
-import {ReactComponent as CrownLogo} from '../../assets/crown.svg'
+import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
+import { UserContext } from '../../contexts/user-context';
 
 const Nav = () => {
+    const { currentUser, setCurrentUser } = useContext(UserContext);
 
     return (
         <>
@@ -13,9 +16,17 @@ const Nav = () => {
                         <CrownLogo className="logo" />
                     </div>
                 </Link>
+                {
+                    currentUser && (
+                        <div className="navLinks">
+                            currentUser: {JSON.stringify(currentUser['email'])}
+                        </div>
+                    )
+                }
+
                 <div className="navLinks">
-                    <Link to='/shop' className="navLink">
-                        SHOP
+                    <Link to='/test' className="navLink">
+                        Test
                     </Link>
                     <Link to='/auth' className="navLink">
                         SIGN IN
