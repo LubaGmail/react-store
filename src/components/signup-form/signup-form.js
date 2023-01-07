@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 
 import { createAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase'
 import InputForm from '../input-form/input-form'
-import Button from '../button/button'
 import './signup-form.styles.scss'
-import '../button/button.styles.scss'
+
+import { UserContext } from '../../contexts/user-context'
 
 const SignupForm = () => {
     const defaultFields = {
@@ -14,7 +14,9 @@ const SignupForm = () => {
         confirmPass: ''
     }
     const [formFields, setFormFields] = useState(defaultFields)
-    const {displayName, email, pass, confirmPass} = formFields
+    const { displayName, email, pass, confirmPass } = formFields
+    
+    const { currentUser, setCurrentUser } = useContext(UserContext);
     
     const handleChange = (ev) => {
         const { name, value } = ev.target
@@ -26,6 +28,7 @@ const SignupForm = () => {
 
     const handleSubmit = async(ev) => {
         ev.preventDefault()
+
         if (pass !== confirmPass) {
             alert('password and confirmPassword must be equal.')
             return
@@ -33,8 +36,10 @@ const SignupForm = () => {
         
         try {
             // Athentication record is created in the Firebase with accessToken
-            const userCredentialImpl = await createAuthUserWithEmailAndPassword(email, pass, confirmPass)
+            const {user} = await createAuthUserWithEmailAndPassword(email, pass, confirmPass)
             handleReset()
+            setCurrentUser(user)
+
         } catch (error) {
             alert(error.toString())
         }
@@ -50,6 +55,14 @@ const SignupForm = () => {
              >
                 <h2>Don't have an account?</h2>
                 <span>Sign up with your email and password</span>
+
+                {
+                    currentUser && (
+                        <div>
+                            currentUser: {JSON.stringify(currentUser['email'])}
+                        </div>
+                    )
+                } 
                 
                 <form onSubmit={handleSubmit}>
                     <InputForm id='displayName'
@@ -92,11 +105,11 @@ const SignupForm = () => {
                     />
 
                     <div className='button-div'>
-                        <Button type='button' buttonType='google'
-                            onClick={handleSubmit}
+                        <button type='button' className='signup-buttons' 
+                            onClick={handleSubmit} disabled={currentUser}
                         >
                             Sign Up
-                        </Button>
+                        </button>
                         <span className='clear' onClick={handleReset}>
                             Clear
                         </span>

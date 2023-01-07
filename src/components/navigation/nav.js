@@ -4,9 +4,15 @@ import { useContext } from 'react';
 import './nav.styles.scss'
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 import { UserContext } from '../../contexts/user-context';
+import { signOutUser } from "../../utils/firebase/firebase";
 
 const Nav = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
+    
+    const handleSignout = async () => {
+        await signOutUser();
+        setCurrentUser(null)
+    }
 
     return (
         <>
@@ -28,9 +34,21 @@ const Nav = () => {
                     <Link to='/test' className="navLink">
                         Test
                     </Link>
-                    <Link to='/auth' className="navLink">
-                        SIGN IN
-                    </Link>
+                    {
+                        !currentUser && (
+                            <Link to='/auth' className="navLink">
+                                SIGN IN
+                            </Link>
+                        )
+                    }
+                    {
+                        currentUser && (
+                            <span className="navLink" onClick={handleSignout}
+                            >
+                                SIGN OUT
+                            </span>
+                        )
+                    }
                 </div>
 
             </div>

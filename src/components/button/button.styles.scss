@@ -13,10 +13,17 @@
     border: none;
     margin-right: 1rem;
 
-    &:hover {
+    &:enabled:hover {
         background-color: white;
         color: black;
         border: 1px solid black;
+    }
+
+    &:disabled {
+        background-color: silver;
+        border: none;
+        cursor: none;
+        color: white;   
     }
 
     &.google-signup {
@@ -24,7 +31,7 @@
         color: black;
         border: 2px solid rgb(25, 183, 47);
 
-        &:hover {
+        &:enabled:hover {
             background-color: rgb(25, 183, 47);
             color: white;
             border: none;

@@ -4,7 +4,6 @@ import { useState, useContext } from 'react'
 import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase'
 import './signin-form.styles.scss'
 import InputForm from '../input-form/input-form'
-import Button from '../button/button'
 
 import { UserContext } from '../../contexts/user-context'
 
@@ -17,7 +16,7 @@ const SigninForm = () => {
     const { email, pass } = formFields
     
     // setCurrentUser ƒ dispatchSetState(fiber, queue, action) 
-    const { setCurrentUser } = useContext(UserContext);
+    const { currentUser, setCurrentUser } = useContext(UserContext);
     
     const handleChange = (ev) => {
         const { name, value } = ev.target
@@ -51,7 +50,15 @@ const SigninForm = () => {
             <div className='sign-in-container'>
                 <h2>Already have an account?</h2>
                 <span>Sign in with your email and password or with your Google account</span>
-                
+              
+                {
+                    currentUser && (
+                        <div>
+                            currentUser: {JSON.stringify(currentUser['email'])}
+                        </div>
+                    )
+                } 
+                          
                 <form onSubmit={handleSubmit}>
                     <InputForm id='email'
                         label='Email'
@@ -62,7 +69,6 @@ const SigninForm = () => {
                         required 
                     />
                      
-
                     <InputForm id='pass'
                         label='Password'
                         type='password'  
@@ -74,17 +80,17 @@ const SigninForm = () => {
                      />
 
                     <div className='button-div'>
-                    <Button type='submit' className='button-container'
-                        onClick={handleSubmit} 
-                    >
-                        Sign In
-                    </Button>
-                    <button type='button' className='button-container google-button' 
-                        onClick={logGoogleUser}
-                    >
-                        Google Sign In
-                    </button>
-                </div>
+                        <button type='submit' className='signin-buttons'
+                            onClick={handleSubmit} disabled={currentUser}
+                        >
+                            Sign In
+                        </button>
+                        <button type='button' className='signin-buttons google-button' 
+                            onClick={logGoogleUser} disabled={currentUser}
+                        >
+                            Google Sign In
+                        </button>
+                    </div>
                 </form>
 
             </div>

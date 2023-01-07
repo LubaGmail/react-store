@@ -7,6 +7,7 @@ import {
     GoogleAuthProvider,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
+    signOut,    
 } from "firebase/auth"
 
 import {
@@ -27,6 +28,8 @@ const firebaseConfig = {
 
 // firebase sdk
 const firebaseApp = initializeApp(firebaseConfig);
+// clothing-db-63b47
+export const db = getFirestore();
 
 // instance of provider; you can have have multiple providers
 const googleProvider = new GoogleAuthProvider()
@@ -34,9 +37,6 @@ const googleProvider = new GoogleAuthProvider()
 googleProvider.setCustomParameters({
     prompt: 'select_account'
 })
-
-// clothing-db-63b47
-export const db = getFirestore();
 
 // doc based on user.uid and user.accessToken
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
@@ -78,7 +78,6 @@ export const createAuthUserWithEmailAndPassword = async (email, pass, confirmPas
 }
 
 export const signInAuthUserWithEmailAndPassword = async (email, pass) => {
-    // validate fields
     if (!email || !pass) {
         throw new Error('signin-form.handleSubmit - email and password not entered.')
     }
@@ -87,6 +86,8 @@ export const signInAuthUserWithEmailAndPassword = async (email, pass) => {
     const userCredentialImpl = await signInWithEmailAndPassword(auth, email, pass)
     return userCredentialImpl
 }
+
+export const signOutUser = async () => await signOut(auth);
 
 // application wide
 export const auth = getAuth()
