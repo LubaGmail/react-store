@@ -52,6 +52,7 @@ const Nav = () => {
                 </div>
 
             </div>
+            
             <Outlet />
         </>
     )

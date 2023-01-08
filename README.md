@@ -47,3 +47,9 @@ Firebase
 .
 .   >   More tools >    Rendering   > Paint flashing
 
+Resources
+    https://zerotomastery.io/
+    https://www.youtube.com/@ZeroToMastery/videos
+    https://zerotomastery.io/blog/?tag=MustRead&utm_source=mailerlite&utm_medium=email&utm_campaign=warm_welcome&utm_term=2023-01-08#recent
+
+    

@@ -1,8 +1,8 @@
 import { useState, useContext } from 'react'
 
+import './signup-form.styles.scss'
 import { createAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase'
 import InputForm from '../input-form/input-form'
-import './signup-form.styles.scss'
 
 import { UserContext } from '../../contexts/user-context'
 
@@ -39,7 +39,6 @@ const SignupForm = () => {
             const {user} = await createAuthUserWithEmailAndPassword(email, pass, confirmPass)
             handleReset()
             setCurrentUser(user)
-
         } catch (error) {
             alert(error.toString())
         }

@@ -33,7 +33,6 @@ export const db = getFirestore();
 
 // instance of provider; you can have have multiple providers
 const googleProvider = new GoogleAuthProvider()
-
 googleProvider.setCustomParameters({
     prompt: 'select_account'
 })

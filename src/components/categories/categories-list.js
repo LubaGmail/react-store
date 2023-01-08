@@ -1,5 +1,5 @@
-import { DUMMY_CATEGORIES } from '../../data/DUMMY_CATEGORIES'
 import './categories-list.styles.scss'
+import { DUMMY_CATEGORIES } from '../../data/DUMMY_CATEGORIES'
 import CategoryItem from './category-item';
 
 const CategoryList = () => {
