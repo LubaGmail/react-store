@@ -4,14 +4,8 @@ import Nav from './components/navigation/nav'
 import Home from './components/routes/home/home';
 import Auth from './components/routes/auth/auth'
 import Test from './components/test/test'
+import Shop from './components/routes/shop/shop'
 
-export const Shop = () => {
-  return (
-    <>
-      <h2>Shop</h2>
-    </>
-  )
-}
 
 const App = () => {
   return (

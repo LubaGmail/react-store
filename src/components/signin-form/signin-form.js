@@ -15,7 +15,7 @@ const SigninForm = () => {
     const [formFields, setFormFields] = useState(defaultFields)
     const { email, pass } = formFields
     
-     const { currentUser } = useContext(UserContext);
+    const { currentUser } = useContext(UserContext);
     
     const handleChange = (ev) => {
         const { name, value } = ev.target

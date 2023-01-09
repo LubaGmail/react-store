@@ -25,6 +25,10 @@ button {
   cursor: pointer;
 }
 
+ul, li {
+  list-style: none;
+}
+
 .center {
   margin: auto;
   text-align: center;

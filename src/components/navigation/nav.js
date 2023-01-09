@@ -34,6 +34,10 @@ const Nav = () => {
                     <Link to='/test' className="navLink">
                         Test
                     </Link>
+                    <Link to='/shop' className="navLink">
+                        Shop
+                    </Link>
+
                     {
                         !currentUser && (
                             <Link to='/auth' className="navLink">
