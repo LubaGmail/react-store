@@ -8,6 +8,7 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     signOut,    
+    onAuthStateChanged
 } from "firebase/auth"
 
 import {
@@ -58,7 +59,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
                 ...additionalInformation,
             });
         } catch (error) {
-            console.log('error creating the user', error.message);
+            throw new Error('error creating the user', error.message);
         }
     }
     return userDocRef;
@@ -86,8 +87,14 @@ export const signInAuthUserWithEmailAndPassword = async (email, pass) => {
     return userCredentialImpl
 }
 
+// returns Promise<UserCredential>
+export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
+
 export const signOutUser = async () => await signOut(auth);
+
+// give me a callback as soon as the function is instantiated
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback)
 
 // application wide
 export const auth = getAuth()
-export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)
+

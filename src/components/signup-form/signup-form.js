@@ -16,7 +16,7 @@ const SignupForm = () => {
     const [formFields, setFormFields] = useState(defaultFields)
     const { displayName, email, pass, confirmPass } = formFields
     
-    const { currentUser, setCurrentUser } = useContext(UserContext);
+    const { currentUser } = useContext(UserContext);
     
     const handleChange = (ev) => {
         const { name, value } = ev.target
@@ -38,7 +38,7 @@ const SignupForm = () => {
             // Athentication record is created in the Firebase with accessToken
             const {user} = await createAuthUserWithEmailAndPassword(email, pass, confirmPass)
             handleReset()
-            setCurrentUser(user)
+   
         } catch (error) {
             alert(error.toString())
         }

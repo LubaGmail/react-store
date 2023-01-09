@@ -15,8 +15,7 @@ const SigninForm = () => {
     const [formFields, setFormFields] = useState(defaultFields)
     const { email, pass } = formFields
     
-    // setCurrentUser ƒ dispatchSetState(fiber, queue, action) 
-    const { currentUser, setCurrentUser } = useContext(UserContext);
+     const { currentUser } = useContext(UserContext);
     
     const handleChange = (ev) => {
         const { name, value } = ev.target
@@ -28,8 +27,8 @@ const SigninForm = () => {
 
     const logGoogleUser = async () => {
         const { user } = await signInWithGooglePopup()
+        
         const userDocRef = await createUserDocumentFromAuth(user);
-        setCurrentUser(user);
     }
 
     const handleSubmit = async(ev) => {
@@ -38,7 +37,7 @@ const SigninForm = () => {
        
         try {
             const { user } = await signInAuthUserWithEmailAndPassword(email, pass)
-            setCurrentUser(user);
+
         } catch (error) {
           alert(error.toString())  
         }
