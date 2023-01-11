@@ -2,10 +2,9 @@ import { useState, useContext } from 'react'
 
 // export const signInWithGooglePopup = () => signInWithPopup(auth, provider)
 import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase'
-import './signin-form.styles.scss'
 import InputForm from '../input-form/input-form'
-
 import { UserContext } from '../../contexts/user-context'
+import './signin-form.styles.scss'
 
 const SigninForm = () => {
     const defaultFields = {

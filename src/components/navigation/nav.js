@@ -16,7 +16,7 @@ const Nav = () => {
 
     return (
         <>
-            <div className="nav" style={{background: '#F0F8FF'}} >
+            <div className="nav" >
                 <Link to='/home' className="logo" >
                     <div className="logoDiv">
                         <CrownLogo className="logo" />

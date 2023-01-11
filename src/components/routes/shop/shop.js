@@ -1,22 +1,23 @@
 import { useContext } from 'react'
 
 import { ProductsContext } from '../../../contexts/products-context'
+import Product from '../../product/product'
+import './shops.styles.scss'
 
 const Shop = () => {
     const { products } = useContext(ProductsContext);
     
     return (
-        <>
-            <h2>Shop</h2>
+        <div className='products'>
             {
                 products.map((el, i) => (
                     <li key={i}>
-                        {el.name}
+                        <Product product={el} />
                     </li>
                 ))
         
             }
-        </>
+        </div>
     )
 }
 

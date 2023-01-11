@@ -8,7 +8,7 @@ export const ProductsContext = createContext({
 
 export const ProductsProvider = ({ children }) => {
     const [products, setProducts] = useState(PRODUCTS);
-    const value = { products };
+    const value = { products };         // put an array inside value which must be an object
     
     return (
         <ProductsContext.Provider value={value}>
