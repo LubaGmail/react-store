@@ -10,7 +10,7 @@ const Product = ({ product }) => {
                 />
                 <div className="footer">
                     <span className='name'>{name}</span>
-                    <span className='price'>{price}</span>
+                    <span className='price'>${price}</span>
                 </div>
                 <button>
                     Add to cart
