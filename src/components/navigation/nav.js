@@ -1,13 +1,16 @@
 import { Outlet, Link } from "react-router-dom"
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 
 import './nav.styles.scss'
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 import { UserContext } from '../../contexts/user-context';
 import { signOutUser } from "../../utils/firebase/firebase";
+import CartIcon from "../cart-icon/cart-icon";
+import CartDropdown from "../cart-dropdown/cart-dropdown";
 
 const Nav = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
+    const [ showCart, setShowCart ] = useState(false)
     
     const handleSignout = async () => {
         await signOutUser();
@@ -16,6 +19,7 @@ const Nav = () => {
 
     return (
         <>
+            <p>showCart: {JSON.stringify(showCart)} </p>
             <div className="nav" >
                 <Link to='/home' className="logo" >
                     <div className="logoDiv">
@@ -53,8 +57,15 @@ const Nav = () => {
                             </span>
                         )
                     }
+
+                    <span onClick={() => setShowCart(!showCart)}><CartIcon /></span>
+                    
                 </div>
 
+                {
+                    showCart && <CartDropdown />
+                }
+               
             </div>
             
             <Outlet />
