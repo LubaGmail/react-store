@@ -12,9 +12,7 @@ const Product = ({ product }) => {
                     <span className='name'>{name}</span>
                     <span className='price'>${price}</span>
                 </div>
-                <button>
-                    Add to cart
-                </button>
+                <button>Add to cart</button>
             </div>
         </>
     )
