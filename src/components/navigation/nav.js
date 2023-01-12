@@ -4,22 +4,27 @@ import { useState, useContext } from 'react';
 import './nav.styles.scss'
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 import { UserContext } from '../../contexts/user-context';
+import { CartContext } from '../../contexts/cart-context'
 import { signOutUser } from "../../utils/firebase/firebase";
 import CartIcon from "../cart-icon/cart-icon";
 import CartDropdown from "../cart-dropdown/cart-dropdown";
 
 const Nav = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
-    const [ showCart, setShowCart ] = useState(false)
+    const { cartVisible, setCartVisible } = useContext(CartContext);
     
     const handleSignout = async () => {
         await signOutUser();
         setCurrentUser(null)
     }
 
+    const handleCartVisibility = () => {
+        console.log('handleCartVisibility', cartVisible)
+        setCartVisible(!cartVisible)
+    }
+
     return (
         <>
-            <p>showCart: {JSON.stringify(showCart)} </p>
             <div className="nav" >
                 <Link to='/home' className="logo" >
                     <div className="logoDiv">
@@ -58,12 +63,12 @@ const Nav = () => {
                         )
                     }
 
-                    <span onClick={() => setShowCart(!showCart)}><CartIcon /></span>
+                    <span onClick={handleCartVisibility}><CartIcon /></span>
                     
                 </div>
 
                 {
-                    showCart && <CartDropdown />
+                    cartVisible && <CartDropdown />
                 }
                
             </div>
