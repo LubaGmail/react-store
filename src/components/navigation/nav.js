@@ -19,7 +19,6 @@ const Nav = () => {
     }
 
     const handleCartVisibility = () => {
-        console.log('handleCartVisibility', cartVisible)
         setCartVisible(!cartVisible)
     }
 

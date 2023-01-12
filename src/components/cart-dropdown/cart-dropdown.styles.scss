@@ -30,6 +30,34 @@
   
     button {
       margin-top: auto;
+      width: 200px;
+      height: 40px;
+      line-height: 40px;
+      letter-spacing: 0.5px;
+      padding: 0 1rem 0 1rem;
+      font-size: 13px;
+      background-color: green;
+      color: white;
+      text-transform: uppercase;
+      font-family: 'Open Sans Condensed';
+      font-weight: bolder;
+      border: none;
+      margin-right: 1rem;
+
+      &:hover:enabled {
+        background-color: rgb(20, 173, 48);
+        color: white;
+        border: none;
+      }
+  
+      &:disabled {
+          background-color: silver;
+          border: none;
+          cursor: none;
+          color: white;   
+      }
+  
     }
+   
 }
   
