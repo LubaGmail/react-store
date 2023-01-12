@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom"
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 
 import './nav.styles.scss'
 import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
@@ -11,15 +11,11 @@ import CartDropdown from "../cart-dropdown/cart-dropdown";
 
 const Nav = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
-    const { cartVisible, setCartVisible } = useContext(CartContext);
+    const { cartOpen } = useContext(CartContext);
     
     const handleSignout = async () => {
         await signOutUser();
         setCurrentUser(null)
-    }
-
-    const handleCartVisibility = () => {
-        setCartVisible(!cartVisible)
     }
 
     return (
@@ -62,12 +58,12 @@ const Nav = () => {
                         )
                     }
 
-                    <span onClick={handleCartVisibility}><CartIcon /></span>
+                    <CartIcon />
                     
                 </div>
 
                 {
-                    cartVisible && <CartDropdown />
+                    cartOpen && <CartDropdown />
                 }
                
             </div>
