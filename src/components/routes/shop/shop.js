@@ -2,6 +2,7 @@ import { useContext } from 'react'
 
 import { ProductsContext } from '../../../contexts/products-context'
 import Product from '../../product/product'
+
 import './shops.styles.scss'
 
 const Shop = () => {

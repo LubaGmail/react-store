@@ -36,7 +36,7 @@ react-router-dom  vs NextJS nav
 Firebase
     https://console.firebase.google.com/?pli=1
 
-    create cloghing-db project
+    create clothing-db project
 
         Project Overview
             Build

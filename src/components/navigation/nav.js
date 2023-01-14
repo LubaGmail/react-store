@@ -59,9 +59,7 @@ const Nav = () => {
                     }
 
                     <CartIcon />
-                    
                 </div>
-
                 {
                     cartOpen && <CartDropdown />
                 }
