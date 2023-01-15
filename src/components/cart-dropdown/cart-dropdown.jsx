@@ -6,7 +6,7 @@ import { CartContext } from '../../contexts/cart-context'
 import './cart-dropdown.styles.scss'
 
 const CartDropdown = () => {
-    const { cartItems } = useContext(CartContext)
+    const { cartItems } = useContext(CartContext)   // cartItems: [] ->  return as an Array
 
     return (
         <>
