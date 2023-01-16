@@ -12,7 +12,6 @@ export const CartContext = createContext({
 
 const addItemToCart = (cartItems, product) => {
     let existingCartItem = cartItems.find(el => el.id === product.id)
-   
     if (existingCartItem) {
         return cartItems.map((el) => {
             if (el.id === product.id) {
@@ -22,7 +21,6 @@ const addItemToCart = (cartItems, product) => {
             }
         })
     } 
-    
     return [...cartItems, { ...product, quantity: 1 } ];
 }
 
@@ -43,8 +41,7 @@ const updateItemQuantity = (cartItems, product) => {
 }
 
 const updateItems = (cartItems, product) => {
-    const updatedItems = cartItems.filter(el => el.id !== product.id)
-    return updatedItems
+    return cartItems.filter(el => el.id !== product.id)
 }
 
 export const CartProvider = ({ children }) => {
@@ -61,20 +58,15 @@ export const CartProvider = ({ children }) => {
     }, [cartItems])
 
     const addToCart = (product) => {
-        let updatedCart = addItemToCart(cartItems, product)
-        setCartItems(updatedCart)
+        setCartItems(addItemToCart(cartItems, product) )
     }
 
     const updateQuantity = (product) => {
-        const updatedCart = updateItemQuantity(cartItems, product)
-        if (updatedCart) {
-            setCartItems(updatedCart)
-        }
+        setCartItems(updateItemQuantity(cartItems, product))
     }
 
     const deleteItem = (product) => {
-        const updatedItems = updateItems(cartItems, product)
-        setCartItems(updatedItems)
+        setCartItems( updateItems(cartItems, product) )
     }
     
     const value = { cartOpen, setCartOpen, cartItems, addToCart, cartTotal, updateQuantity, deleteItem };
