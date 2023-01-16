@@ -1,10 +1,10 @@
 import { useContext } from "react"
 
 import { CartContext } from "../../../contexts/cart-context"
-import CheckoutItem from "./checkout-item"
+import CheckoutItem from '../../checkout-item/checkout-item'
 
 const Checkout = () => {
-    const { cartItems, setCartItems } = useContext(CartContext)
+    const { cartItems } = useContext(CartContext)
     
     return (
         <>
@@ -28,7 +28,6 @@ const Checkout = () => {
                     </tbody>
                 </table>
             </div>
-
         </>
     )
 }

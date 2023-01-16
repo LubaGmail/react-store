@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Outlet, Link } from "react-router-dom"
+import {Link } from "react-router-dom"
 
 import CartItem from '../cart-item/cart-item'
 import { CartContext } from '../../contexts/cart-context'
@@ -7,7 +7,12 @@ import { CartContext } from '../../contexts/cart-context'
 import './cart-dropdown.styles.scss'
 
 const CartDropdown = () => {
-    const { cartItems } = useContext(CartContext)   // cartItems: [] ->  return as an Array
+    // cartItems: [] ->  return as an Array
+    const { cartItems } = useContext(CartContext)           
+
+    const handleClick = () => {
+        // console.log('handleClick in cart-dropdown')
+    }
 
     return (
         <>
@@ -20,13 +25,12 @@ const CartDropdown = () => {
                     ))
                 }
                 <Link to='/checkout'>
-                    <button>          
+                    <button onClick={handleClick}>          
                         GO TO CHECKOUT
                     </button>
                 </Link>
             </div>
         </>
-
     )
 }
 
