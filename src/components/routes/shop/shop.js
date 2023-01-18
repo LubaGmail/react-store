@@ -10,14 +10,11 @@ const Shop = () => {
     
     return (
         <div className='products'>
-            {
-                products.map((el, i) => (
-                    <li key={i}>
-                        <Product product={el} />
-                    </li>
-                ))
-        
-            }
+            {products.map((el, i) => (
+                <li key={i}>
+                    <Product product={el} />
+                </li>
+            )) } 
         </div>
     )
 }

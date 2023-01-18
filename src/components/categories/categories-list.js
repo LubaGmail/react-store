@@ -6,15 +6,11 @@ const CategoryList = () => {
   return (
     <>
       <div className='categories'>
-        {
-          DUMMY_CATEGORIES.map( (el, i) => (
-            <CategoryItem category={el} key={i} />
-          ))
-        }
+          { DUMMY_CATEGORIES.map( (el, i) => (
+              <CategoryItem category={el} key={i} />
+          )) }
       </div>
-
     </>
-     
   );
 }
 

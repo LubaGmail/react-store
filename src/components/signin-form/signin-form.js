@@ -4,6 +4,7 @@ import { useState, useContext } from 'react'
 import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase'
 import InputForm from '../input-form/input-form'
 import { UserContext } from '../../contexts/user-context'
+
 import './signin-form.styles.scss'
 
 const SigninForm = () => {
@@ -13,7 +14,6 @@ const SigninForm = () => {
     }
     const [formFields, setFormFields] = useState(defaultFields)
     const { email, pass } = formFields
-    
     const { currentUser } = useContext(UserContext);
     
     const handleChange = (ev) => {
@@ -36,7 +36,6 @@ const SigninForm = () => {
        
         try {
             const { user } = await signInAuthUserWithEmailAndPassword(email, pass)
-
         } catch (error) {
           alert(error.toString())  
         }
@@ -49,13 +48,11 @@ const SigninForm = () => {
                 <h2>Already have an account?</h2>
                 <span>Sign in with your email and password or with your Google account</span>
               
-                {
-                    currentUser && (
-                        <div>
-                            currentUser: {JSON.stringify(currentUser['email'])}
-                        </div>
-                    )
-                } 
+                { currentUser && (
+                    <div>
+                        currentUser: {JSON.stringify(currentUser['email'])}
+                    </div>
+                ) } 
                           
                 <form onSubmit={handleSubmit}>
                     <InputForm id='email'

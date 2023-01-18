@@ -26,13 +26,11 @@ const Nav = () => {
                         <CrownLogo className="logo" />
                     </div>
                 </Link>
-                {
-                    currentUser && (
-                        <div className="navLinks">
-                            currentUser: {JSON.stringify(currentUser['email'])}
-                        </div>
-                    )
-                }
+                { currentUser && (
+                    <div className="navLinks">
+                        currentUser: {JSON.stringify(currentUser['email'])}
+                    </div>
+                ) }
 
                 <div className="navLinks">
                     <Link to='/test' className="navLink">
@@ -42,27 +40,23 @@ const Nav = () => {
                         SHOP
                     </Link>
 
-                    {
-                        !currentUser && (
-                            <Link to='/auth' className="navLink">
-                                SIGN IN
-                            </Link>
-                        )
-                    }
-                    {
-                        currentUser && (
-                            <span className="navLink" onClick={handleSignout}
-                            >
-                                SIGN OUT
-                            </span>
-                        )
-                    }
+                    { !currentUser && (
+                        <Link to='/auth' className="navLink">
+                            SIGN IN
+                        </Link>
+                    ) }
+                    
+                    { currentUser && (
+                        <span className="navLink" onClick={handleSignout}
+                        >
+                            SIGN OUT
+                        </span>
+                    ) }
 
                     <CartIcon />
                 </div>
-                {
-                    cartOpen && <CartDropdown />
-                }
+
+                { cartOpen && <CartDropdown /> }
                
             </div>
             

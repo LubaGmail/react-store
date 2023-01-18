@@ -1,0 +1,33 @@
+.checkout-container {
+    width: 80%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    margin: 2rem auto;
+    // background-color: yellow;
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid #ddd;
+        // background-color: aqua;
+        
+        th {
+            background-color: brown;
+            color: white;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    }
+
+}

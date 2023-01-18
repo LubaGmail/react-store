@@ -38,7 +38,6 @@ const SignupForm = () => {
             // Athentication record is created in the Firebase with accessToken
             const {user} = await createAuthUserWithEmailAndPassword(email, pass, confirmPass)
             handleReset()
-   
         } catch (error) {
             alert(error.toString())
         }
@@ -50,18 +49,15 @@ const SignupForm = () => {
 
     return (
         <>
-            <div className='sign-up-container'
-             >
+            <div className='sign-up-container'>
                 <h2>Don't have an account?</h2>
                 <span>Sign up with your email and password</span>
 
-                {
-                    currentUser && (
-                        <div>
-                            currentUser: {JSON.stringify(currentUser['email'])}
-                        </div>
-                    )
-                } 
+                { currentUser && (
+                    <div>
+                        currentUser: {JSON.stringify(currentUser['email'])}
+                    </div>
+                ) } 
                 
                 <form onSubmit={handleSubmit}>
                     <InputForm id='displayName'
@@ -91,7 +87,7 @@ const SignupForm = () => {
                         onChange={handleChange}
                         minLength={6}
                         required
-                     />
+                    />
 
                     <InputForm id='confirmPass'
                         type='password'
