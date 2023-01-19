@@ -6,18 +6,21 @@ import CheckoutItem from '../checkout-item/checkout-item'
 import './checkout-list.styles.scss'
 
 const CheckoutList = () => {
-    const { cartItems } = useContext(CartContext)
+    const { cartItems, cartPriceTotal } = useContext(CartContext)
     
     return (
         <>
             <div className="checkout-container">
                 <table>
                     <thead>
-                        <th>Product</th>
-                        <th>Description</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Remove</th>
+                        <tr>
+                            <th>Product</th>
+                            <th>Description</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Remove</th>
+                        </tr>
+
                     </thead>    
                     <tbody>
                         { cartItems.map(el => (
@@ -26,6 +29,12 @@ const CheckoutList = () => {
                             </tr>
                         )) }    
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colSpan={2}>Price Total: </th>
+                            <td colSpan={4}>${cartPriceTotal}</td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </>
