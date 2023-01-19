@@ -6,7 +6,7 @@ import './product.styles.scss'
 
 const Product = ({ product }) => {
     const { id, name, imageUrl, price } = product;
-    const { addToCart } = useContext(CartContext)
+    const { addItem } = useContext(CartContext)
         
     return (
         <>
@@ -17,7 +17,7 @@ const Product = ({ product }) => {
                     <span className='name'>{name}</span>
                     <span className='price'>${price}</span>
                 </div>
-                <button onClick={ () => addToCart (product)}
+                <button onClick={ () => addItem (product)}
                 >
                     Add to cart
                 </button>

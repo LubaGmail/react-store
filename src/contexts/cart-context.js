@@ -4,14 +4,14 @@ export const CartContext = createContext({
     cartOpen: false,
     setCartOpen: () => null,
     cartItems: [],
-    addToCart: (product) => null,
+    addItem: (product) => null,
     cartTotal: 0,
     cartPriceTotal: 0,
-    updateQuantity: (product) => null,
-    deleteItem: (product) => null,
+    updateItemQuantity: (product) => null,
+    removeItem: (product) => null,
 })
 
-const addItemToCart = (cartItems, product) => {
+const handleAddItem = (cartItems, product) => {
     let existingCartItem = cartItems.find(el => el.id === product.id)
     if (existingCartItem) {
         return cartItems.map((el) => 
@@ -23,7 +23,7 @@ const addItemToCart = (cartItems, product) => {
     return [...cartItems, { ...product, quantity: 1 } ];
 }
 
-const updateItemQuantity = (cartItems, product) => {
+const handleUpdateItemQuantity = (cartItems, product) => {
     let existingCartItem = cartItems.find(el => el.id === product.id)
     
     if (existingCartItem) {
@@ -39,7 +39,7 @@ const updateItemQuantity = (cartItems, product) => {
     } 
 }
 
-const updateItems = (cartItems, product) => {
+const handleRemoveItem = (cartItems, product) => {
     return cartItems.filter(el => el.id !== product.id)
 }
 
@@ -65,19 +65,19 @@ export const CartProvider = ({ children }) => {
         setCartPriceTotal(tot);
     }, [cartItems])
 
-    const addToCart = (product) => {
-        setCartItems(addItemToCart(cartItems, product) )
+    const addItem = (product) => {
+        setCartItems(handleAddItem(cartItems, product) )
     }
 
-    const updateQuantity = (product) => {
-        setCartItems(updateItemQuantity(cartItems, product))
+    const updateItemQuantity = (product) => {
+        setCartItems(handleUpdateItemQuantity(cartItems, product))
     }
 
-    const deleteItem = (product) => {
-        setCartItems( updateItems(cartItems, product) )
+    const removeItem = (product) => {
+        setCartItems( handleRemoveItem(cartItems, product) )
     }
     
-    const value = { cartOpen, setCartOpen, cartItems, addToCart, cartTotal, cartPriceTotal, updateQuantity, deleteItem };
+    const value = { cartOpen, setCartOpen, cartItems, addItem, updateItemQuantity, removeItem, cartTotal, cartPriceTotal, };
 
     return (
         <CartContext.Provider value={value}>

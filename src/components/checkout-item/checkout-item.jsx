@@ -7,13 +7,13 @@ import './checkout-item.styles.scss'
 const CheckoutItem = ({item}) => {
     const { id, name, imageUrl, price, quantity } = item
     const quantityRef = useRef()
-     const { updateQuantity, deleteItem } = useContext(CartContext)
+     const { updateItemQuantity, removeItem } = useContext(CartContext)
  
     const subtractQuantity = () => {
         let x = parseInt( (quantityRef.current.innerText).toString() )
         if  (!(x < 2) ) {
             item.quantity = --x
-            updateQuantity (item)
+            updateItemQuantity (item)
             quantityRef.current.innerText = x.toString()
         }
     }
@@ -21,12 +21,12 @@ const CheckoutItem = ({item}) => {
     const addQuantity = () => {
         let x = parseInt( (quantityRef.current.innerText).toString() )
         item.quantity = ++x
-        updateQuantity (item)
+        updateItemQuantity (item)
         quantityRef.current.innerText = x.toString()
     }
 
-    const removeItem = () => {
-        deleteItem(item)
+    const handleRemoveItem = () => {
+        removeItem(item)
     }
 
     return (
@@ -41,7 +41,7 @@ const CheckoutItem = ({item}) => {
                 <span onClick={addQuantity} className="clickable">  &#10095; </span>
             </td>
             <td>${price}</td>
-            <td onClick={removeItem} className="clickable">
+            <td onClick={handleRemoveItem} className="clickable">
                 <span>&#10005;</span>
             </td>  
         </>
