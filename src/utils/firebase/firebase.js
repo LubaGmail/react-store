@@ -15,7 +15,11 @@ import {
     getFirestore,
     doc,
     getDoc,
-    setDoc
+    getDocs,
+    setDoc,
+    collection,
+    writeBatch,
+    query,
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -27,13 +31,45 @@ const firebaseConfig = {
     appId: "1:953513898950:web:e153e88bdef7bb51f6b8c7"
 };
 
-// firebase sdk
-const firebaseApp = initializeApp(firebaseConfig);
+try
+{
+    initializeApp(firebaseConfig);
+} catch(error) {
+    throw new Error(error.toString());
+}
+
 // clothing-db-63b47
 export const db = getFirestore();
 
+export const addCollection = async (collectionKey, objectsToAdd) => {
+    // start transaction
+    const batch = writeBatch(db);
+    const collectionRef = collection(db, collectionKey);
+    
+    objectsToAdd.forEach((object) => {
+        // addCollection('categories', SHOP_DATA)
+        const docRef = doc(collectionRef, object.title.toLowerCase());
+        batch.set(docRef, object);
+    });
+
+    await batch.commit();
+    console.log('done');
+}
+
+export const getCategories = async () => {
+    const collectionRef = collection(db, 'categories');
+    const q = query(collectionRef);
+    const querySnapshot = await getDocs(q);
+    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+        const { title, items } = docSnapshot.data();
+        acc[title.toLowerCase()] = items;
+        return acc;
+    }, {})
+    return categoryMap;
+}
+
 // instance of provider; you can have have multiple providers
-const googleProvider = new GoogleAuthProvider()
+const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
     prompt: 'select_account'
 })
@@ -42,7 +78,8 @@ googleProvider.setCustomParameters({
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
     if (!userAuth) return;
 
-    // contains databaseId, segments Array['users', 'AYx5rSvo1SPayARoHHLqbY47vDl1']
+    // createUserWithEmailAndPassword(auth, email, pass)
+    // signInWithPopup(auth, googleProvider)
     const userDocRef = doc(db, 'users', userAuth.uid);
     const userSnapshot = await getDoc(userDocRef);
     const exists = userSnapshot.exists()
