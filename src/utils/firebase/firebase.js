@@ -47,7 +47,7 @@ export const addCollection = async (collectionKey, objectsToAdd) => {
     const collectionRef = collection(db, collectionKey);
     
     objectsToAdd.forEach((object) => {
-        // addCollection('categories', SHOP_DATA)
+        // called from: addCollection('categories', SHOP_DATA)
         const docRef = doc(collectionRef, object.title.toLowerCase());
         batch.set(docRef, object);
     });

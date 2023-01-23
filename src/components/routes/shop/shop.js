@@ -1,21 +1,32 @@
 import { useContext } from 'react'
 
-import { ProductsContext } from '../../../contexts/products-context'
+import { CategoriesContext } from '../../../contexts/categories-context'
 import Product from '../../product/product'
 
 import './shops.styles.scss'
 
 const Shop = () => {
-    const { products } = useContext(ProductsContext);
+    const { categoriesMap } = useContext(CategoriesContext);
     
     return (
-        <div className='products'>
-            {products.map((el, i) => (
-                <li key={i}>
-                    <Product product={el} />
-                </li>
-            )) } 
-        </div>
+        <>
+            {
+                Object.keys(categoriesMap).map((title, i) => (
+                    <>
+                        <h2>{title}</h2>
+                        <div className='products'>
+                            {
+                                categoriesMap[title].map((p, i) => (
+                                    <Product key={i}  product={p} />
+                                ))
+                            }
+                        </div>
+                    </>
+                
+                ) )
+            }
+
+        </>
     )
 }
 

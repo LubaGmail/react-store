@@ -9,7 +9,7 @@ const Product = ({ product }) => {
     const { addItem } = useContext(CartContext)
         
     return (
-        <>
+     
             <div className='product'>
                 <img src={imageUrl} alt={name}
                 />
@@ -22,7 +22,7 @@ const Product = ({ product }) => {
                     Add to cart
                 </button>
             </div>
-        </>
+
     )
 }
 

@@ -11,9 +11,19 @@ export const CartContext = createContext({
     removeItem: (product) => null,
 })
 
-const handleAddItem = (cartItems, product) => {
-    let existingCartItem = cartItems.find(el => el.id === product.id)
+const itemInCart = (cartItems, product) => {
+    const existingCartItem = cartItems.find(el => el.id === product.id)
     if (existingCartItem) {
+        return true
+    } else {
+        return false
+    }
+}
+
+const handleAddItem = (cartItems, product) => {
+    const isItemInCart = itemInCart(cartItems, product)
+
+    if (isItemInCart) {
         return cartItems.map((el) => 
             el.id === product.id
             ? {...el, quantity: ++el.quantity }
@@ -24,9 +34,9 @@ const handleAddItem = (cartItems, product) => {
 }
 
 const handleUpdateItemQuantity = (cartItems, product) => {
-    let existingCartItem = cartItems.find(el => el.id === product.id)
+    const isItemInCart = itemInCart(cartItems, product)
     
-    if (existingCartItem) {
+    if (isItemInCart) {
         let updatedCart = cartItems.map((el) => {
             if (el.id === product.id) {
                 el.quantity = product.quantity
