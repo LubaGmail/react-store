@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 
 import { CategoriesContext } from '../../../contexts/categories-context'
-import Product from '../../product/product'
+import CategoriesPreview from '../../categories/categories-preview'
 
 import './shops.styles.scss'
 
@@ -10,22 +10,14 @@ const Shop = () => {
     
     return (
         <>
-            {
-                Object.keys(categoriesMap).map((title, i) => (
-                    <>
-                        <h2>{title}</h2>
-                        <div className='products'>
-                            {
-                                categoriesMap[title].map((p, i) => (
-                                    <Product key={i}  product={p} />
-                                ))
-                            }
-                        </div>
-                    </>
-                
-                ) )
-            }
-
+            <div className='shop-container'>
+                {Object.keys(categoriesMap).map((key) => {
+                    const products = categoriesMap[key];
+                    return (
+                        <CategoriesPreview key={key} title={key} products={products} />
+                    )
+                })}
+            </div>
         </>
     )
 }

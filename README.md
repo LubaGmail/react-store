@@ -48,10 +48,23 @@ Firebase
 .   >   More tools >    Rendering   > Paint flashing
 
 
-
-
-
-Implement Observer pattern
+Conditional within map within map
+    {
+        Object.keys(categoriesMap).map((title, i) => (
+            <>
+                <h2>{title}</h2>
+                <div className='products'>
+                    {
+                        categoriesMap[title].map((p, i) => (
+                            <li key={i}>
+                                {i < 4 && <Product product={p}  />}
+                            </li>
+                        ))
+                    }
+                </div>
+            </>
+        ) )
+    }   
 
 
 
