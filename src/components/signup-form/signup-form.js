@@ -1,10 +1,10 @@
 import { useState, useContext } from 'react'
 
-import './signup-form.styles.scss'
 import { createAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase'
 import InputForm from '../input-form/input-form'
-
 import { UserContext } from '../../contexts/user-context'
+
+import './signup-form.styles.scss'
 
 const SignupForm = () => {
     const defaultFields = {
@@ -28,12 +28,10 @@ const SignupForm = () => {
 
     const handleSubmit = async(ev) => {
         ev.preventDefault()
-
         if (pass !== confirmPass) {
             alert('password and confirmPassword must be equal.')
             return
         }
-        
         try {
             // Athentication record is created in the Firebase with accessToken
             const {user} = await createAuthUserWithEmailAndPassword(email, pass, confirmPass)

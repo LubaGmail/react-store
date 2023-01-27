@@ -7,13 +7,13 @@ import Product from '../../product/product'
 import './categories-preview.styles.scss';
 
 const CategoriesPreview = () => {
-    const {categoriesMap} = useContext(CategoriesContext)
+    const { categoriesMap } = useContext(CategoriesContext)
+    
     return (
         <>
             {
                 Object.keys(categoriesMap).map((title, i) => (
                     <div className='category-preview-container' key={i}>
-
                         <Link to={`/shop/${title}`}>
                             <h2>{title.toUpperCase()}</h2>
                         </Link>

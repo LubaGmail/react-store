@@ -68,12 +68,6 @@ export const getCategories = async () => {
     return categoryMap;
 }
 
-// instance of provider; you can have have multiple providers
-const googleProvider = new GoogleAuthProvider();
-googleProvider.setCustomParameters({
-    prompt: 'select_account'
-})
-
 // doc based on user.uid and user.accessToken
 export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
     if (!userAuth) return;
@@ -123,6 +117,12 @@ export const signInAuthUserWithEmailAndPassword = async (email, pass) => {
     const userCredentialImpl = await signInWithEmailAndPassword(auth, email, pass)
     return userCredentialImpl
 }
+
+// instance of provider; you can have have multiple providers
+const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({
+    prompt: 'select_account'
+})
 
 // returns Promise<UserCredential>
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider)

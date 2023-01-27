@@ -6,7 +6,8 @@ import Category from '../category/category'
 import './shops.styles.scss'
 
 const Shop = () => {
-        
+    // App: <Route path='shop/*' element={<Shop />} />    
+    //
     return (
         <Routes>
             <Route index element={<CategoriesPreview />} />

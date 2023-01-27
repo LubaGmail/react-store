@@ -9,18 +9,7 @@ Google fonts
 
     generate on google site ->  copy href to public/index.html<head> -> update src/index.css/scss ->  inspect the change
 
-react-router-dom  vs NextJS nav
-    next
-        /pages/_app.js
-            <Layout>
-                <Component {...pageProps} />
-            <MainNav>
-                <div>
-                    <Link href='/'>LOGO</Link>
-                    <ul>
-                        <li>
-                            <Link href='/'>Home</Link>
-
+react-router-dom  vs   NextJS nav
     react-router-dom
         App
             <Routes>
@@ -32,6 +21,17 @@ react-router-dom  vs NextJS nav
             <div>
                 <Link to='/home'>
                     <div>LOGO</div>
+
+    next
+        /pages/_app.js
+            <Layout>
+                <Component {...pageProps} />
+            <MainNav>
+                <div>
+                    <Link href='/'>LOGO</Link>
+                    <ul>
+                        <li>
+                            <Link href='/'>Home</Link>
 
 Firebase
     https://console.firebase.google.com/?pli=1
@@ -66,13 +66,10 @@ Conditional within map within map
         ) )
     }   
 
+<label className={`${ otherProps.value.length ? 'shrink' : '' } form-input-label`} >{label}</label>
 
-
-
-
-
-
-
+Link to ~vs~ navigate
+    If there's no other action that needs to happen prior to switching a page - use Link to
 
 
 Resources

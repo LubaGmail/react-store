@@ -11,6 +11,9 @@ import reportWebVitals from './reportWebVitals';
 
 import './index.scss';
 
+/**
+  public/index.html     <div id="root"></div>
+*/
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 
-// export const signInWithGooglePopup = () => signInWithPopup(auth, provider)
-import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase'
+import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword, createUserDocumentFromAuth }
+    from '../../utils/firebase/firebase'
 import InputForm from '../input-form/input-form'
 import { UserContext } from '../../contexts/user-context'
 
@@ -26,14 +26,12 @@ const SigninForm = () => {
 
     const logGoogleUser = async () => {
         const { user } = await signInWithGooglePopup()
-        
         const userDocRef = await createUserDocumentFromAuth(user);
     }
 
     const handleSubmit = async(ev) => {
         ev.preventDefault()
         const { email, pass } = formFields
-       
         try {
             const { user } = await signInAuthUserWithEmailAndPassword(email, pass)
         } catch (error) {
@@ -72,7 +70,7 @@ const SigninForm = () => {
                         onChange={handleChange}
                         minLength={6}
                         required
-                     />
+                    />
 
                     <div className='button-div'>
                         <button type='submit' className='signin-buttons'
