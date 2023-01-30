@@ -38,7 +38,7 @@ const Test = () => {
                     />
                 </div>
                 <ButtonContainer>
-                    <Button buttonType={BUTTON_TYPES.google}
+                    <Button buttonType={BUTTON_TYPES.product}
                         type='submit'
                     >
                         Button  
