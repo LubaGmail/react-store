@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom"
+import { Outlet } from "react-router-dom"
 import { useContext } from 'react';
 
 import { UserContext } from '../../contexts/user-context';
@@ -39,7 +39,7 @@ const Nav = () => {
 
                 <NavLinks>
                     <NavLink to='/test'>
-                        Test
+                        TEST
                     </NavLink>
                     <NavLink to='/shop'>
                         SHOP

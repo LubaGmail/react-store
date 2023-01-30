@@ -1,5 +1,7 @@
-import './test.styles.scss'
 import Button from './button'
+import { BUTTON_TYPES } from './button'
+
+import { TestContainer, ButtonContainer } from "./test.styles";
 
 const Test = () => {
 
@@ -14,7 +16,7 @@ const Test = () => {
 
     return (
 
-        <div className='container'>
+        <TestContainer>
             <h2>Test</h2>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -35,29 +37,16 @@ const Test = () => {
                         onClick={doSomething}
                     />
                 </div>
-                <div className='buttonContiner'>
-                    <Button 
+                <ButtonContainer>
+                    <Button buttonType={BUTTON_TYPES.google}
                         type='submit'
                     >
-                        submit Button  
+                        Button  
                     </Button>
-                    <Button
-                        type='button'
-                        onClick={doSomething}
-                    >
-                        doSomething Button
-                    </Button>
-                    <button
-                        type='button'
-                        onClick={doSomething}
-                    >
-                        doSomething button
-                    </button>
-
-                </div>
+                </ButtonContainer>
 
             </form>
-        </div>
+        </TestContainer>
     )
 }
 
