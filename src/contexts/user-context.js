@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
   const value = { currentUser, setCurrentUser };
 
   useEffect(() => {
-    // returns callback with user as its param
+    // onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback)
     const unsubscribe = onAuthStateChangedListener((user) => {
       setCurrentUser(user)
     })

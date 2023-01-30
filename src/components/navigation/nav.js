@@ -8,7 +8,12 @@ import { ReactComponent as CrownLogo } from '../../assets/crown.svg'
 import CartIcon from "../cart-icon/cart-icon";
 import CartDropdown from "../cart-dropdown/cart-dropdown";
 
-import './nav.styles.scss'
+import {
+    NavContainer,
+    LogoContainer,
+    NavLinks,
+    NavLink
+} from './nav.styles';
 
 const Nav = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -21,45 +26,43 @@ const Nav = () => {
 
     return (
         <>
-            <div className="nav" >
-                <Link to='/home' className="logo" >
-                    <div className="logoDiv">
-                        <CrownLogo className="logo" />
-                    </div>
-                </Link>
+            <NavContainer>
+                <LogoContainer to='/'>
+                    <CrownLogo />
+                </LogoContainer>
+
                 { currentUser && (
-                    <div className="navLinks">
+                    <NavLink>
                         currentUser: {JSON.stringify(currentUser['email'])}
-                    </div>
+                    </NavLink>
                 ) }
 
-                <div className="navLinks">
-                    <Link to='/test' className="navLink">
+                <NavLinks>
+                    <NavLink to='/test'>
                         Test
-                    </Link>
-                    <Link to='/shop' className="navLink">
+                    </NavLink>
+                    <NavLink to='/shop'>
                         SHOP
-                    </Link>
+                    </NavLink>
 
                     { !currentUser && (
-                        <Link to='/auth' className="navLink">
+                        <NavLink to='/auth' className="navLink">
                             SIGN IN
-                        </Link>
+                        </NavLink>
                     ) }
                     
                     { currentUser && (
-                        <span className="navLink" onClick={handleSignout}
-                        >
+                        <NavLink as='span' onClick={handleSignout} >
                             SIGN OUT
-                        </span>
+                        </NavLink>
                     ) }
 
                     <CartIcon />
-                </div>
+                </NavLinks>
 
                 { cartOpen && <CartDropdown /> }
                
-            </div>
+            </NavContainer>
             
             <Outlet />
         </>

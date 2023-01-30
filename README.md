@@ -1,6 +1,7 @@
 Setup
     npx create-react-app react-store
         npm i sass      npm i react-router-dom      npm i firebase
+        npm i styled-components
 
     npm start          
 
@@ -70,6 +71,14 @@ Conditional within map within map
 
 Link to ~vs~ navigate
     If there's no other action that needs to happen prior to switching a page - use Link to
+
+Application icon
+    place your icon directly under public
+    rename it to favicon.ico
+    index.html
+        <head>
+            <meta charset="utf-8" />
+            <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
 
 
 Resources
