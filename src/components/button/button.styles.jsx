@@ -8,8 +8,8 @@ export const BaseButton = styled.button`
     height: 50px;
     letter-spacing: 0.5px;
     line-height: 50px;
-    padding: 0 35px 0 35px;
-    font-size: 15px;
+    padding: 0 25px 0 25px;
+    font-size: 14px;
     text-transform: uppercase;
     font-family: "Open Sans Condensed";
     font-weight: bolder;
@@ -32,10 +32,20 @@ export const GoogleButton = styled(BaseButton)`
         border: none;
     }
 `
+
+export const CheckoutButton = styled(BaseButton)`
+    background-color:#1b54b1;
+    color: white;
+    &:hover {
+        background-color: #12356c;
+        color: white;
+        border: none;
+    }
+`
 export const ProductButton = styled(BaseButton)`
     background-color: #bc2424;
-    color: white;
- `
+   color: white;
+`
 
 
 

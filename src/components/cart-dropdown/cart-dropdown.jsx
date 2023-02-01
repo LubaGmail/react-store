@@ -4,7 +4,14 @@ import {Link } from "react-router-dom"
 import CartItem from '../cart-item/cart-item'
 import { CartContext } from '../../contexts/cart-context'
 
-import './cart-dropdown.styles.scss'
+import Button from '../button/button'
+import { BUTTON_TYPES } from '../button/button'
+
+import {
+    CartDropdownContainer,
+    EmptyMessage,
+    CartItems
+} from './cart-dropdown.styles';
 
 const CartDropdown = () => {
     // cartItems: [] ->  return as an Array
@@ -15,22 +22,27 @@ const CartDropdown = () => {
     }
 
     return (
-        <>
-            <div className="cart-dropdown">
+        <CartDropdownContainer>
+            <CartItems>
                 {
                     cartItems.map((el) => (
                         <li key={el.id}>
                             <CartItem item={el} />
                         </li>
                     ))
+                } 
+                {
+                    cartItems.length === 0 && 
+                        <EmptyMessage>Your cart is empty</EmptyMessage>
                 }
-                <Link to='/checkout'>
-                    <button onClick={handleClick}>          
-                        GO TO CHECKOUT
-                    </button>
-                </Link>
-            </div>
-        </>
+                
+            </CartItems>
+            <Link to='/checkout'>
+                <Button buttonType={BUTTON_TYPES.checkout} onClick={handleClick}>          
+                    GO TO CHECKOUT
+                </Button>
+            </Link>
+        </CartDropdownContainer>
     )
 }
 

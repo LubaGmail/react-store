@@ -25,12 +25,10 @@ const Button = ({ children, buttonType }) => {
     const CustomButton = getButton(buttonType)
     
     return (
-
         <CustomButton>
             {children}
         </CustomButton>
     )
-
 }
 
 export default Button
