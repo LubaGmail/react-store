@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom'
 import { CategoriesContext } from '../../../contexts/categories-context';
 import Product from '../../product/product'
 
-import './categories-preview.styles.scss';
+import {
+    CategoryPreviewContainer,
+    Title,
+    Preview
+} from './category-preview.styles'
 
 const CategoriesPreview = () => {
     const { categoriesMap } = useContext(CategoriesContext)
@@ -13,11 +17,11 @@ const CategoriesPreview = () => {
         <>
             {
                 Object.keys(categoriesMap).map((title, i) => (
-                    <div className='category-preview-container' key={i}>
+                    <CategoryPreviewContainer key={i}>
                         <Link to={`/shop/${title}`}>
-                            <h2>{title.toUpperCase()}</h2>
+                            <Title>{title.toUpperCase()}</Title>
                         </Link>
-                        <div className='preview'>
+                        <Preview>
                             {
                                 categoriesMap[title].map((p, i) => (
                                     <span key={i}>
@@ -25,8 +29,8 @@ const CategoriesPreview = () => {
                                     </span>
                                 ))
                             }
-                        </div>
-                    </div>
+                        </Preview>
+                    </CategoryPreviewContainer>
                 ) )
             }   
         </>
