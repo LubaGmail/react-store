@@ -1,7 +1,7 @@
 import SigninForm from "../../signin-form/signin-form"
 import SignupForm from '../../signup-form/signup-form'
 
-import './auth.styles.scss'
+import { AuthContainer } from './auth.styles'
 
 /**
     <Route path='auth' element={<Auth />} />
@@ -9,11 +9,10 @@ import './auth.styles.scss'
 const Auth = () => {
    
     return (
-        <div className="auth-container"
-        >
+        <AuthContainer>
             <SigninForm />
             <SignupForm />
-        </div>
+        </ AuthContainer>
     )
 }
 

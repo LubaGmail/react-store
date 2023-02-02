@@ -3,8 +3,6 @@ import { useContext } from 'react'
 import { ReactComponent as BagIcon } from '../../assets/bag.svg'
 import { CartContext } from '../../contexts/cart-context'
 
-import './cart-icon.styles.scss'
-
 const CartIcon = () => {
     const { cartOpen, setCartOpen, cartTotal } = useContext(CartContext)
 

@@ -22,7 +22,6 @@ const itemInCart = (cartItems, product) => {
 
 const handleAddItem = (cartItems, product) => {
     const isItemInCart = itemInCart(cartItems, product)
-
     if (isItemInCart) {
         return cartItems.map((el) => 
             el.id === product.id
@@ -35,7 +34,6 @@ const handleAddItem = (cartItems, product) => {
 
 const handleUpdateItemQuantity = (cartItems, product) => {
     const isItemInCart = itemInCart(cartItems, product)
-    
     if (isItemInCart) {
         let updatedCart = cartItems.map((el) => {
             if (el.id === product.id) {
@@ -63,7 +61,6 @@ export const CartProvider = ({ children }) => {
         let tot = cartItems.reduce((accum, el) => {
             return accum += el.quantity
         }, 0)
-
         setCartTotal(tot);
     }, [cartItems])
 
@@ -71,7 +68,6 @@ export const CartProvider = ({ children }) => {
         let tot = cartItems.reduce((accum, el) => {
             return accum += (el.quantity * el.price)
         }, 0)
-
         setCartPriceTotal(tot);
     }, [cartItems])
 

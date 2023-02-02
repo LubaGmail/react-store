@@ -35,7 +35,6 @@ const CartDropdown = () => {
                     cartItems.length === 0 && 
                         <EmptyMessage>Your cart is empty</EmptyMessage>
                 }
-                
             </CartItems>
             <Link to='/checkout'>
                 <Button buttonType={BUTTON_TYPES.checkout} onClick={handleClick}>          
