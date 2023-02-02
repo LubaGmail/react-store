@@ -1,15 +1,16 @@
-import './categories-list.styles.scss'
 import { DUMMY_CATEGORIES } from '../../data/DUMMY_CATEGORIES'
 import CategoryItem from './category-item';
+
+import { CategoriesContainer } from './categories-list.styles';
 
 const CategoryList = () => {
   return (
     <>
-      <div className='categories'>
+      <CategoriesContainer>
           { DUMMY_CATEGORIES.map( (el, i) => (
               <CategoryItem category={el} key={i} />
           )) }
-      </div>
+      </CategoriesContainer>
     </>
   );
 }
