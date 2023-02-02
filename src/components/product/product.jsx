@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import { CartContext } from '../../contexts/cart-context';
 
-import './product.styles.scss'
+import { ProductContainer, FooterContainer } from './product.styles';
 
 const Product = ({ product }) => {
     const { id, name, imageUrl, price } = product;
@@ -10,18 +10,18 @@ const Product = ({ product }) => {
         
     return (
      
-            <div className='product'>
+            <ProductContainer>
                 <img src={imageUrl} alt={name}
                 />
-                <div className="footer">
+                <FooterContainer>
                     <span className='name'>{name}</span>
                     <span className='price'>${price}</span>
-                </div>
+                </FooterContainer>
                 <button onClick={ () => addItem (product)}
                 >
                     Add to cart
                 </button>
-            </div>
+            </ProductContainer>
 
     )
 }

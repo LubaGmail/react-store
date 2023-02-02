@@ -1,4 +1,15 @@
-.product {
+import styled from 'styled-components' 
+
+export const FooterContainer = styled.div `
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 500;
+  
+`
+export const ProductContainer = styled.div `
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -13,7 +24,7 @@
       object-fit: cover;
       margin-bottom: 5px;
     }
-  
+
     button {
       width: 80%;
       opacity: 0.7;
@@ -40,22 +51,5 @@
         display: flex;
       }
     }
-  
-    .footer {
-      width: 100%;
-      height: 5%;
-      display: flex;
-      justify-content: space-between;
-      font-size: 20px;
-      font-weight: 500;
-  
-      .name {
-        margin: 0 5% 5% 5%; 
-        width: 70%;
-      } 
-        
-      .price {
-        width: 20%;
-      }
-    }
-}
+ 
+`
