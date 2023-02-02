@@ -2,6 +2,8 @@ import { useContext, useRef } from "react"
 
 import { CartContext } from "../../contexts/cart-context"
 
+import { ImageContainer, ClickableSpan, ClickableTd } from './checkout-item.styles'
+
 import './checkout-item.styles.scss'
 
 const CheckoutItem = ({item}) => {
@@ -31,19 +33,19 @@ const CheckoutItem = ({item}) => {
 
     return (
         <>
-            <td className="image-container">
+            <ImageContainer>
                 <img src={imageUrl} alt={name} />
-            </td>
+            </ImageContainer>
             <td>{name}</td>
             <td >
-                <span onClick={subtractQuantity} className="clickable">  &#10094; </span>
+                <ClickableSpan onClick={subtractQuantity}>  &#10094; </ClickableSpan>
                 <span ref={quantityRef}>{quantity}</span>
-                <span onClick={addQuantity} className="clickable">  &#10095; </span>
+                <ClickableSpan onClick={addQuantity}>  &#10095; </ClickableSpan>
             </td>
             <td>${price}</td>
-            <td onClick={handleRemoveItem} className="clickable">
+            <ClickableTd  onClick={handleRemoveItem}>
                 <span>&#10005;</span>
-            </td>  
+            </ClickableTd>  
         </>
     )
 }
