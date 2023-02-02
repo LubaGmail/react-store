@@ -1,4 +1,6 @@
-.checkout-container {
+import styled from "styled-components";
+
+export const CheckoutContainer = styled.div `
     width: 80%;
     min-height: 80vh;
     display: flex;
@@ -7,6 +9,7 @@
     align-content: center;
     margin: 2rem auto;
 
+    
     table {
         border-collapse: collapse;
         border-spacing: 0;
@@ -16,7 +19,7 @@
         th {
             background-color: brown;
             color: white;
-        }
+        }   
 
         th, td {
             text-align: left;
@@ -38,4 +41,12 @@
         }
     }
 
-}
+`
+
+
+
+
+
+
+
+

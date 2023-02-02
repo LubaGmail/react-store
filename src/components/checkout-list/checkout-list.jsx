@@ -3,14 +3,14 @@ import { useContext } from "react"
 import { CartContext } from '../../contexts/cart-context'
 import CheckoutItem from '../checkout-item/checkout-item'
 
-import './checkout-list.styles.scss'
+import { CheckoutContainer } from "./checkout-list.styles"
 
 const CheckoutList = () => {
     const { cartItems, cartPriceTotal } = useContext(CartContext)
     
     return (
         <>
-            <div className="checkout-container">
+            <CheckoutContainer>
                 <table>
                     <thead>
                         <tr>
@@ -20,7 +20,6 @@ const CheckoutList = () => {
                             <th>Price</th>
                             <th>Remove</th>
                         </tr>
-
                     </thead>    
                     <tbody>
                         { cartItems.map(el => (
@@ -36,7 +35,7 @@ const CheckoutList = () => {
                         </tr>
                     </tfoot>
                 </table>
-            </div>
+            </CheckoutContainer>
         </>
     )
 }
