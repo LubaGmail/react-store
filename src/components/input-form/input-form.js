@@ -1,4 +1,4 @@
-import './input-form.styles.scss'
+import { FormInputLabel, Input, Group } from './input-form.styles';
 
 //  <InputForm id='displayName' label='Display Name' type='text' ...
 //
@@ -6,19 +6,20 @@ const InputForm = ({ label, ...otherProps }) => {
     // const {id, type, name, value, onChange} = otherProps
 
     return (
-        <div className='group'>
-            <input className='form-input'
-                {...otherProps}
-            />
+        <Group>
+            <Input {...otherProps} />
             
-            {/* apply shrink class on focus or input */}
+            {/* 
+                apply shrink class on focus or input 
+                 ${ ({ shrink }) => shrink && shrinkLabelStyles };
+            */}
             { label && (
-                <label className={`${ otherProps.value.length ? 'shrink' : '' } form-input-label`}
-                >
+                
+                <FormInputLabel shrink={otherProps.value.length}>
                     {label}
-                </label>
+                </FormInputLabel>
             ) } 
-        </div>
+        </Group>
     )
 }
 

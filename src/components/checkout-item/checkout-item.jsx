@@ -4,8 +4,6 @@ import { CartContext } from "../../contexts/cart-context"
 
 import { ImageContainer, ClickableSpan, ClickableTd } from './checkout-item.styles'
 
-import './checkout-item.styles.scss'
-
 const CheckoutItem = ({item}) => {
     const { id, name, imageUrl, price, quantity } = item
     const quantityRef = useRef()
