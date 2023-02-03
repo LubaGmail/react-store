@@ -1,4 +1,6 @@
-.sign-in-container {
+import styled, { css } from 'styled-components'
+
+export const SignInContainer = styled.div `
     display: flex;
     flex-direction: column;
     width: 380px;
@@ -6,14 +8,14 @@
     h2 {
         margin: 10px 0;
     }
+`
 
-    .button-div {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-.signin-buttons {
+export const ButtonDiv = styled.div `
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+`
+    
+export const SigninButton = styled.button `
     width: 200px;
     height: 40px;
     line-height: 40px;
@@ -40,22 +42,27 @@
         cursor: none;
         color: white;   
     }
+`
+export const GoogleButton = styled(SigninButton)`
+    background-color: white;
+    color: black;
+    border: 2px solid rgb(25, 183, 47);
 
-    &.google-button {
-        background-color: white;
-        color: black;
-        border: 2px solid rgb(25, 183, 47);
-
-        &:hover:enabled {
-            background-color: rgb(25, 183, 47);
-            color: white;
-            border: none;
-        }
-        &:disabled {
-            background-color: silver;
-            border: none;
-            cursor: none;
-            color: white;   
-        }
+    &:hover:enabled {
+        background-color: rgb(25, 183, 47);
+        color: white;
+        border: none;
     }
-}
+    &:disabled {
+        background-color: silver;
+        border: none;
+        cursor: none;
+        color: white;   
+    }
+
+`
+
+
+
+
+

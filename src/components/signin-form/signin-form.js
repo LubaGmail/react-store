@@ -5,7 +5,7 @@ import { signInWithGooglePopup, signInAuthUserWithEmailAndPassword, createUserDo
 import InputForm from '../input-form/input-form'
 import { UserContext } from '../../contexts/user-context'
 
-import './signin-form.styles.scss'
+import { SignInContainer, ButtonDiv, SigninButton, GoogleButton } from './signin-form.styles'
 
 const SigninForm = () => {
     const defaultFields = {
@@ -42,7 +42,7 @@ const SigninForm = () => {
 
     return (
         <>
-            <div className='sign-in-container'>
+            <SignInContainer>
                 <h2>Already have an account?</h2>
                 <span>Sign in with your email and password or with your Google account</span>
               
@@ -72,21 +72,21 @@ const SigninForm = () => {
                         required
                     />
 
-                    <div className='button-div'>
-                        <button type='submit' className='signin-buttons'
+                    <ButtonDiv>
+                        <SigninButton
                             onClick={handleSubmit} disabled={currentUser}
                         >
                             Sign In
-                        </button>
-                        <button type='button' className='signin-buttons google-button' 
+                        </SigninButton>
+                        <GoogleButton 
                             onClick={logGoogleUser} disabled={currentUser}
                         >
                             Google Sign In
-                        </button>
-                    </div>
+                        </GoogleButton>
+                    </ButtonDiv>
                 </form>
 
-            </div>
+            </SignInContainer>
         </>
     )
 }

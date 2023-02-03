@@ -4,7 +4,7 @@ import { createAuthUserWithEmailAndPassword } from '../../utils/firebase/firebas
 import InputForm from '../input-form/input-form'
 import { UserContext } from '../../contexts/user-context'
 
-import './signup-form.styles.scss'
+import { SignUpContainer, ButtonDiv, ClearSpan, SignupButton } from './signup-form.styles'
 
 const SignupForm = () => {
     const defaultFields = {
@@ -28,6 +28,7 @@ const SignupForm = () => {
 
     const handleSubmit = async(ev) => {
         ev.preventDefault()
+       
         if (pass !== confirmPass) {
             alert('password and confirmPassword must be equal.')
             return
@@ -47,7 +48,7 @@ const SignupForm = () => {
 
     return (
         <>
-            <div className='sign-up-container'>
+            <SignUpContainer>
                 <h2>Don't have an account?</h2>
                 <span>Sign up with your email and password</span>
 
@@ -97,19 +98,19 @@ const SignupForm = () => {
                         required
                     />
 
-                    <div className='button-div'>
-                        <button type='button' className='signup-buttons' 
+                    <ButtonDiv>
+                        <SignupButton
                             onClick={handleSubmit} disabled={currentUser}
                         >
                             Sign Up
-                        </button>
-                        <span className='clear' onClick={handleReset}>
+                        </SignupButton>
+                        <ClearSpan onClick={handleReset}>
                             Clear
-                        </span>
-                    </div>
+                        </ClearSpan>
+                    </ButtonDiv >
                 </form>
 
-            </div>
+            </SignUpContainer>
         </>
     )
 }

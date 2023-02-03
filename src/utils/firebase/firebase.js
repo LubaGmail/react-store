@@ -99,8 +99,11 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
 // const res = await createAuthUserWithEmailAndPassword(email, pass, confirmPass)
 export const createAuthUserWithEmailAndPassword = async (email, pass, confirmPass) => {
     // validate fields
-    if (pass !== confirmPass || pass.length < 6) {
+    if (pass !== confirmPass) {
        throw new Error('signup-form.handleSubmit - password and confirmPassword must be equal.')
+    }
+    if ( pass.length < 6) {
+        throw new Error('signup-form.handleSubmit - password must be at least 6 long.')
     }
 
     //  auth is a singleton through the life of the app
