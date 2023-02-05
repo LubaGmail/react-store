@@ -5,6 +5,14 @@ Setup
 
     npm start          
 
+Netify
+    https://app.netlify.com/signup/start/connect
+        CI= npm run build
+            https://preeminent-gumption-48de77.netlify.app/shop
+
+    Vercel (for Next projects)
+        https://vercel.com/new?onboarding=true
+
 Google fonts
     https://fonts.google.com/       https://fonts.google.com/specimen/Open+Sans?category=Sans+Serif
 
